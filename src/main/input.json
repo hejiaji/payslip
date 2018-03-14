@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "David",
+    "lastName": "Rudd",
+    "annualSalary": 60050,
+    "superRate": 9,
+    "paymentStartDate": "01 March - 31 March"
+  },
+  {
+    "firstName": "Ryan",
+    "lastName": "Chen",
+    "annualSalary": 120000,
+    "superRate": 10,
+    "paymentStartDate": "01 March - 31 March"
+  }
+]
