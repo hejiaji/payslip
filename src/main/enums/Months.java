@@ -3,7 +3,7 @@ package main.enums;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public enum Month {
+public enum Months {
     January,
     February,
     March,
@@ -17,9 +17,9 @@ public enum Month {
     November,
     December;
 
-    public static Month fromText(String value) {
+    public static Months fromText(String value) {
         return Arrays.stream(values())
-                .filter(Month -> Month.name().equals(value))
+                .filter(Months -> Months.name().equals(value))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException(String.format("no element as %s", value)));
     }
