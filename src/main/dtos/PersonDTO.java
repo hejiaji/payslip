@@ -7,6 +7,10 @@ public class PersonDTO {
     private Double superRate;
     private String paymentStartDate;
 
+    public PersonDTO(){
+
+    }
+
     public PersonDTO(String firstName, String lastName, Double annualSalary, Double superRate, String paymentStartDate) {
         this.firstName = firstName;
         this.lastName = lastName;
