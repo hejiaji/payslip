@@ -5,14 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PaySlip {
     private String name;
     private String payPeriod;
-    private Double grossIncome;
-    private Double incomeTax;
-    private Double netIncome;
+    private long grossIncome;
+    private long incomeTax;
+    private long netIncome;
     @JsonProperty("super")
-    private Double superPrice;
+    private long superPrice;
 
-    public PaySlip() {
-
+    public PaySlip(String name, String payPeriod, long grossIncome, long incomeTax, long netIncome, long superPrice) {
+        this.name = name;
+        this.payPeriod = payPeriod;
+        this.grossIncome = grossIncome;
+        this.incomeTax = incomeTax;
+        this.netIncome = netIncome;
+        this.superPrice = superPrice;
     }
 
     public String getName() {
@@ -31,35 +36,35 @@ public class PaySlip {
         this.payPeriod = payPeriod;
     }
 
-    public Double getGrossIncome() {
+    public long getGrossIncome() {
         return grossIncome;
     }
 
-    public void setGrossIncome(Double grossIncome) {
+    public void setGrossIncome(long grossIncome) {
         this.grossIncome = grossIncome;
     }
 
-    public Double getIncomeTax() {
+    public long getIncomeTax() {
         return incomeTax;
     }
 
-    public void setIncomeTax(Double incomeTax) {
+    public void setIncomeTax(long incomeTax) {
         this.incomeTax = incomeTax;
     }
 
-    public Double getNetIncome() {
+    public long getNetIncome() {
         return netIncome;
     }
 
-    public void setNetIncome(Double netIncome) {
+    public void setNetIncome(long netIncome) {
         this.netIncome = netIncome;
     }
 
-    public Double getSuperPrice() {
+    public long getSuperPrice() {
         return superPrice;
     }
 
-    public void setSuperPrice(Double superPrice) {
+    public void setSuperPrice(long superPrice) {
         this.superPrice = superPrice;
     }
 }

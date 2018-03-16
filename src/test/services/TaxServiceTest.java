@@ -10,59 +10,59 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TaxServiceTest {
     private TaxService taxService = TaxService.getInstance();
-    private long grossIncome;
+    private Double annualSalary;
 
     @Test
     public void should_return_correct_tax_when_use_non_tax_strategy() {
-        this.grossIncome = 10000;
+        this.annualSalary = 10000.0;
 
-        TaxStrategy taxStrategy = new NonTaxStrategy(grossIncome);
+        TaxStrategy taxStrategy = new NonTaxStrategy(annualSalary);
         long expectedResult = taxStrategy.calculateTax();
 
-        assertEquals(expectedResult, taxService.calculateTax(grossIncome));
+        assertEquals(expectedResult, taxService.calculateTax(annualSalary));
     }
 
     @ParameterizedTest
-    @ValueSource(longs = {18201, 20000, 37000})
-    public void should_return_correct_tax_when_use_low_tax_strategy(long value) {
-        this.grossIncome = value;
+    @ValueSource(doubles = {18201.0, 20000.0, 37000.0})
+    public void should_return_correct_tax_when_use_low_tax_strategy(double value) {
+        this.annualSalary = value;
 
-        TaxStrategy taxStrategy = new LowTaxStrategy(grossIncome);
+        TaxStrategy taxStrategy = new LowTaxStrategy(annualSalary);
         long expectedResult = taxStrategy.calculateTax();
 
-        assertEquals(expectedResult, taxService.calculateTax(grossIncome));
+        assertEquals(expectedResult, taxService.calculateTax(annualSalary));
     }
 
     @ParameterizedTest
-    @ValueSource(longs = {37001, 50000, 87000})
-    public void should_return_correct_tax_when_use_middle_tax_strategy(long value) {
-        this.grossIncome = value;
+    @ValueSource(doubles = {37001.0, 50000.0, 87000.0})
+    public void should_return_correct_tax_when_use_middle_tax_strategy(double value) {
+        this.annualSalary = value;
 
-        TaxStrategy taxStrategy = new MiddleTaxStrategy(grossIncome);
+        TaxStrategy taxStrategy = new MiddleTaxStrategy(annualSalary);
         long expectedResult = taxStrategy.calculateTax();
 
-        assertEquals(expectedResult, taxService.calculateTax(grossIncome));
+        assertEquals(expectedResult, taxService.calculateTax(annualSalary));
     }
 
     @ParameterizedTest
-    @ValueSource(longs = {87001, 150000, 180000})
-    public void should_return_correct_tax_when_use_above_middle_tax_strategy(long value) {
-        this.grossIncome = value;
+    @ValueSource(doubles = {87001.0, 150000.0, 180000.0})
+    public void should_return_correct_tax_when_use_above_middle_tax_strategy(double value) {
+        this.annualSalary = value;
 
-        TaxStrategy taxStrategy = new AboveMiddleTaxStrategy(grossIncome);
+        TaxStrategy taxStrategy = new AboveMiddleTaxStrategy(annualSalary);
         long expectedResult = taxStrategy.calculateTax();
 
-        assertEquals(expectedResult, taxService.calculateTax(grossIncome));
+        assertEquals(expectedResult, taxService.calculateTax(annualSalary));
     }
 
     @ParameterizedTest
-    @ValueSource(longs = {180001, 500000, 1000000})
-    public void should_return_correct_tax_when_use_high_tax_strategy(long value) {
-        this.grossIncome = value;
+    @ValueSource(doubles = {180001.0, 500000.0, 1000000.0})
+    public void should_return_correct_tax_when_use_high_tax_strategy(double value) {
+        this.annualSalary = value;
 
-        TaxStrategy taxStrategy = new HighTaxStrategy(grossIncome);
+        TaxStrategy taxStrategy = new HighTaxStrategy(annualSalary);
         long expectedResult = taxStrategy.calculateTax();
 
-        assertEquals(expectedResult, taxService.calculateTax(grossIncome));
+        assertEquals(expectedResult, taxService.calculateTax(annualSalary));
     }
 }
