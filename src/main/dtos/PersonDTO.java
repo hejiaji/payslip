@@ -1,12 +1,19 @@
 package main.dtos;
 
-public class PersonInputDTO {
+public class PersonDTO {
     private String firstName;
     private String lastName;
     private Double annualSalary;
     private Double superRate;
     private String paymentStartDate;
 
+    public PersonDTO(String firstName, String lastName, Double annualSalary, Double superRate, String paymentStartDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.annualSalary = annualSalary;
+        this.superRate = superRate;
+        this.paymentStartDate = paymentStartDate;
+    }
 
     public String getFirstName() {
         return firstName;

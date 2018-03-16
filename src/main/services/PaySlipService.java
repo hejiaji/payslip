@@ -1,17 +1,17 @@
 package main.services;
 
-import main.dtos.PersonInputDTO;
+import main.dtos.PersonDTO;
 import main.entities.PaySlip;
 import main.helpers.DateHelper;
 
 public class PaySlipService {
-    public static PaySlip getPaySlip(PersonInputDTO personInputDTO) {
-        String name = String.format("%s %s",personInputDTO.getFirstName(), personInputDTO.getLastName());
-        long grossIncome = calculateGrossIncome(personInputDTO.getAnnualSalary(), personInputDTO.getPaymentStartDate());
-        long incomeTax = TaxService.getInstance().calculateTax(personInputDTO.getAnnualSalary());
+    public static PaySlip getPaySlip(PersonDTO personDTO) {
+        String name = String.format("%s %s", personDTO.getFirstName(), personDTO.getLastName());
+        long grossIncome = calculateGrossIncome(personDTO.getAnnualSalary(), personDTO.getPaymentStartDate());
+        long incomeTax = TaxService.getInstance().calculateTax(personDTO.getAnnualSalary());
         long netIncome = grossIncome - incomeTax;
-        long superPrice = Math.round(grossIncome * personInputDTO.getSuperRate() / 100);
-        return new PaySlip(name, personInputDTO.getPaymentStartDate(), grossIncome, incomeTax, netIncome, superPrice);
+        long superPrice = Math.round(grossIncome * personDTO.getSuperRate() / 100);
+        return new PaySlip(name, personDTO.getPaymentStartDate(), grossIncome, incomeTax, netIncome, superPrice);
     }
 
     public static long calculateGrossIncome(Double annualSalary, String paymentStartDate) {

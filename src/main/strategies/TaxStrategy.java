@@ -14,7 +14,7 @@ public abstract class TaxStrategy {
     }
 
     public long calculateTax() {
-        Double result = (this.getBasicTax() + ((this.annualSalary - this.taxPoint) * this.getTaxRate())) / 12;
+        Double result = (this.getBasicTax() + ((this.annualSalary - this.getTaxPoint()) * this.getTaxRate())) / 12;
         return Math.round(result);
     }
 

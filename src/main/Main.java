@@ -1,11 +1,9 @@
 package main;
 
-import main.dtos.PersonInputDTO;
+import main.dtos.PersonDTO;
 import main.entities.PaySlip;
-import main.helpers.DateHelper;
 import main.helpers.JsonHelper;
 import main.services.PaySlipService;
-import main.services.TaxService;
 
 import java.util.List;
 
@@ -15,9 +13,9 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            List<PersonInputDTO> personInputDTOList = JsonHelper.loadFromJSON("src/main/files/input.json");
+            List<PersonDTO> personDTOList = JsonHelper.loadFromJSON("src/main/files/input.json");
 
-            List<PaySlip> paySlipList = personInputDTOList.stream()
+            List<PaySlip> paySlipList = personDTOList.stream()
                     .map(PaySlipService::getPaySlip)
                     .collect(toList());
 
