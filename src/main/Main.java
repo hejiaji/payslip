@@ -14,12 +14,18 @@ import static java.util.stream.Collectors.toList;
 public class Main {
 
     public static void main(String[] args) {
-        List<PersonInputDTO> personInputDTOList = JsonHelper.loadFromJSON("src/main/input.json");
+        try {
+            List<PersonInputDTO> personInputDTOList = JsonHelper.loadFromJSON("src/main/files/input.json");
 
-        List<PaySlip> paySlipList = personInputDTOList.stream()
-                .map(PaySlipService::getPaySlip)
-                .collect(toList());
+            List<PaySlip> paySlipList = personInputDTOList.stream()
+                    .map(PaySlipService::getPaySlip)
+                    .collect(toList());
 
-        System.out.println("Hello World!");
+            JsonHelper.generateJSON("src/main/files/output.json", paySlipList);
+            System.out.println("Successfully generate the paySlip files.");
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
     }
 }
