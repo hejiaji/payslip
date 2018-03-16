@@ -1,12 +1,12 @@
 package main.strategies;
 
 public class NonTaxStrategy extends TaxStrategy {
-    public NonTaxStrategy(Double grossIncome) {
+    public NonTaxStrategy(long grossIncome) {
         super(grossIncome);
     }
 
     @Override
-    public Double calculateTax() {
-        return 0.0;
+    public long calculateTax() {
+        return 0;
     }
 }

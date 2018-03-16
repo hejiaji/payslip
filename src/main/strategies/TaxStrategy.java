@@ -7,14 +7,15 @@ public abstract class TaxStrategy {
 
     private Double taxRate;
 
-    protected Double grossIncome;
+    protected long grossIncome;
 
-    public TaxStrategy(Double grossIncome) {
+    public TaxStrategy(long grossIncome) {
         this.grossIncome = grossIncome;
     }
 
-    public Double calculateTax() {
-        return this.getBasicTax() + ((this.grossIncome - this.taxPoint) * this.getTaxRate());
+    public long calculateTax() {
+        Double result = this.getBasicTax() + ((this.grossIncome - this.taxPoint) * this.getTaxRate());
+        return result.longValue();
     }
 
     public Double getBasicTax() {

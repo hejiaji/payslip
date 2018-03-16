@@ -11,6 +11,10 @@ public class PaySlip {
     @JsonProperty("super")
     private Double superPrice;
 
+    public PaySlip() {
+
+    }
+
     public String getName() {
         return name;
     }

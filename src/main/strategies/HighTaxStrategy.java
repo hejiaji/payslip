@@ -1,7 +1,7 @@
 package main.strategies;
 
 public class HighTaxStrategy extends TaxStrategy {
-    public HighTaxStrategy(Double grossIncome) {
+    public HighTaxStrategy(long grossIncome) {
         super(grossIncome);
         this.setBasicTax(54232.0);
         this.setTaxPoint(180000.0);

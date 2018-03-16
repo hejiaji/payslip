@@ -12,12 +12,12 @@ public class TaxService {
         return instance;
     }
 
-    public Double calculateTax(Double grossIncome) {
+    public long calculateTax(long grossIncome) {
         TaxStrategy taxStrategy = getTaxStrategy(grossIncome);
         return taxStrategy.calculateTax();
     }
 
-    private TaxStrategy getTaxStrategy(Double grossIncome) {
+    private TaxStrategy getTaxStrategy(long grossIncome) {
         if (isInRange(grossIncome, 18200.0)) {
             return new NonTaxStrategy(grossIncome);
         } else if (isInRange(grossIncome, 18200.0, 37000.0)) {
@@ -31,11 +31,11 @@ public class TaxService {
         }
     }
 
-    private boolean isInRange(Double grossIncome, Double lowPoint, Double highPoint) {
+    private boolean isInRange(long grossIncome, Double lowPoint, Double highPoint) {
         return grossIncome > lowPoint && isInRange(grossIncome, highPoint);
     }
 
-    private boolean isInRange(Double grossIncome, Double highPoint) {
+    private boolean isInRange(long grossIncome, Double highPoint) {
         return grossIncome <= highPoint;
     }
 }
